@@ -1,0 +1,12 @@
+num = 1
+host = "127.0.0.1"
+wait = 1000
+
+ping = Popen("ping -n 50 {} -w {} {}".format(num, wait, host),
+             stdout=PIPE, stderr=PIPE)  ## if you don't want it to print it out
+exit_code = ping.wait()
+
+if exit_code != 0:
+    print("Host offline.")
+else:
+    print("Host online.")  
